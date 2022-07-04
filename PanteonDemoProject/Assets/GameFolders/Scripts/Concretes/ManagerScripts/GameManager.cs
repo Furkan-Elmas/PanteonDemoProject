@@ -1,4 +1,4 @@
-using PanteonDemoProject.Concretes.Manager.States;
+using PanteonDemoProject.Abstracts.GameStates;
 using PanteonDemoProject.Concretes.ObstacleSettings;
 using UnityEngine;
 using System;
@@ -10,20 +10,24 @@ namespace PanteonDemoProject.Concretes.Manager
         // Game data list that will take GameData Scriptable Object.
         [SerializeField] private RotatingObstacle _rotatingObstacleSettings;
 
+        #region Subject Events
+
         // The actions that will be triggered when player wins or loses the games.
         public event Action OnRunningGameWon;
         public event Action OnRunningGameLost;
         public event Action OnPaintingGameWon;
 
         // The actions that will be triggered when player ready to running or when player has get started or over the running game.
-        public event Action OnReadyToRunningGame;
-        public event Action OnStartToRunningGame;
+        public event Action OnReadyToRun;
+        public event Action OnStartToRun;
         public event Action OnRunningGameOver;
 
         // The actions that will be triggered when player ready to painting or when player has get started or over the painting game.
-        public event Action OnReadyToPaintingGame;
-        public event Action OnStartToPaintingGame;
+        public event Action OnReadyToPaint;
+        public event Action OnStartToPaint;
         public event Action OnPaintingGameOver;
+        
+        #endregion
 
         // Making singleton class.
         public static GameManager Instance { get; private set; }
@@ -44,55 +48,57 @@ namespace PanteonDemoProject.Concretes.Manager
             }
         }
 
-        public void InitializeRunningGameWonStage()
+
+        // Creating subject methods
+        public void InitializeOnRunningGameWon()
         {
             GameState = GameStates.InRunningOver;
             OnRunningGameWon?.Invoke();
         }
 
-        public void InitializeRunningGameLostStage()
+        public void InitializeOnRunningGameLost()
         {
             GameState = GameStates.InRunningOver;
             OnRunningGameLost?.Invoke();
         }
 
-        public void InitializePaintingGameWonStage()
+        public void InitializeOnPaintingGameWon()
         {
             GameState = GameStates.InPaintingOver;
             OnPaintingGameWon?.Invoke();
         }
 
-        public void InitializeReadyToRunStage()
+        public void InitializeOnReadyToRun()
         {
             GameState = GameStates.InReadyToRun;
-            OnReadyToRunningGame?.Invoke();
+            OnReadyToRun?.Invoke();
         }
 
-        public void InitializeStartToRunningGameStage()
+        public void InitializeOnStartToRun()
         {
             GameState = GameStates.InRunning;
-            OnStartToRunningGame?.Invoke();
+            OnStartToRun?.Invoke();
         }
 
-        public void InitializeRunningGameOverStage()
+        public void InitializeOnRunningGameOver()
         {
             GameState = GameStates.InRunningOver;
             OnRunningGameOver?.Invoke();
         }
 
-        public void InitializeReadyToPaintingStage()
+        public void InitializeOnReadyToPaint()
         {
             GameState = GameStates.InReadyToPaint;
-            OnReadyToPaintingGame?.Invoke();
+            OnReadyToPaint?.Invoke();
         }
 
-        public void InitializeStartToPaintingGameStage()
+        public void InitializeOnStartToPaint()
         {
             GameState = GameStates.InPainting;
-            OnStartToPaintingGame?.Invoke();
+            OnStartToPaint?.Invoke();
         }
 
-        public void InitializePaintingGameOverStage()
+        public void InitializeOnPaintingGameOver()
         {
             GameState = GameStates.InPaintingOver;
             OnPaintingGameOver?.Invoke();

@@ -1,4 +1,4 @@
-namespace PanteonDemoProject.Concretes.Manager.States
+namespace PanteonDemoProject.Abstracts.GameStates
 {
     public enum GameStates
     {

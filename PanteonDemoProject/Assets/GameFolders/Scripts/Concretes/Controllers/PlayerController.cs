@@ -1,7 +1,8 @@
 using UnityEngine;
-using PanteonDemoProject.Abstracts.AnimationControl;
+using PanteonDemoProject.Abstracts.AnimationData;
 using PanteonDemoProject.Abstracts.Inputs;
-using PanteonDemoProject.Concretes.Manager.States;
+using PanteonDemoProject.Abstracts.CharacterSettings;
+using PanteonDemoProject.Abstracts.GameStates;
 using PanteonDemoProject.Concretes.Manager;
 using PanteonDemoProject.Concretes.Player.Movements;
 
@@ -9,24 +10,36 @@ namespace PanteonDemoProject.Concretes.Player.Controller
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] float _forwardSpeed;
-        [SerializeField] float _swerveSpeed;
+        [SerializeField] CharacterSettings _characterSettings;
+
+        Animator _playerAnimator;
 
         SwerveMovement _swerveMovement;
+        ForwardMovement _forwardMovement;
         Rigidbody _playerRigidbody;
         InputData _inputData;
 
 
         void Awake()
         {
-            _swerveMovement = new SwerveMovement(this);
+            _playerAnimator = GetComponentInChildren<Animator>();
+            _playerRigidbody = GetComponent<Rigidbody>();
+            _swerveMovement = new SwerveMovement(_playerRigidbody);
+            _forwardMovement = new ForwardMovement(_playerRigidbody);
             _inputData = new InputData();
+            GameManager.Instance.InitializeOnStartToRun();
         }
 
         void FixedUpdate()
         {
-            if(GameManager.Instance.GameState == GameStates.InRunning)
-                _swerveMovement.SwervePlayer(_swerveSpeed, _inputData.DeltaXValue);
+            _playerAnimator.SetBool("IsRunning", _inputData.IsClicking);
+
+            if (GameManager.Instance.GameState == GameStates.InRunning)
+                _swerveMovement.MakeSwarveMovement(_characterSettings.SwerveSpeed, _inputData.DeltaXValue);
+            if (_inputData.IsClicking)
+            {
+                _forwardMovement.MoveForward(_characterSettings.ForwardSpeed);
+            }
         }
     }
 }
