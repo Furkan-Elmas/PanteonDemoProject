@@ -1,10 +1,12 @@
 using UnityEngine;
 
-namespace PanteonDemoProject.Concretes.ObstacleSettings
+namespace PanteonDemoProject.Abstracts.Settings
 {
-    [CreateAssetMenu(fileName ="RotatingPlatformSettings",menuName ="Platform Runner/Settings/Rotating Platform")]
+    [CreateAssetMenu(fileName = "RotatingPlatformSettings", menuName = "Platform Runner/Settings/Rotating Platform Settings")]
     public class RotatingPlatformSettings : ScriptableObject
     {
-        [SerializeField] float _rotationSpeed;
+        [SerializeField] float _rotationSpeed = 50f;
+
+        public float RotationSpeed => _rotationSpeed;
     }
 }

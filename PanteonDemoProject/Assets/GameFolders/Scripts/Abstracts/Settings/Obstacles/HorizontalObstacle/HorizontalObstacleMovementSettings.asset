@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ee5e38bbbfe864298423e9fb210dad, type: 3}
-  m_Name: RotatingPlatformSettings
+  m_Script: {fileID: 11500000, guid: 9646922349e8b8749bf9a0afd5565fc1, type: 3}
+  m_Name: HorizontalObstacleMovementSettings
   m_EditorClassIdentifier: 
-  _rotationSpeed: 30
+  _vectorLength: {x: 10, y: 0, z: 0}
+  _movementSpeed: 6

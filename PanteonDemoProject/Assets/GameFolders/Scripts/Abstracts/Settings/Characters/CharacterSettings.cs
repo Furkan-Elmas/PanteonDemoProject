@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PanteonDemoProject.Abstracts.Settings
 {
-    [CreateAssetMenu(fileName ="CharacterSettings",menuName ="Platform Runner/Characters/Character Settings")]
+    [CreateAssetMenu(fileName ="CharacterSettings",menuName ="Platform Runner/Settings/Character Settings")]
     public class CharacterSettings : ScriptableObject
     {
         [Header("Speeds")]

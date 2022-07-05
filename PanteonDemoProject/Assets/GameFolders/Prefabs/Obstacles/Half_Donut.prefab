@@ -23,9 +23,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752839174653213714}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 1586450937970212812}
   - {fileID: 6600741443447200902}
@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 1869264826642186262}
   - component: {fileID: 1981487323674431797}
   - component: {fileID: 8792392606845829702}
+  - component: {fileID: 1466543836}
   m_Layer: 7
   m_Name: Half_Donut_Side
   m_TagString: Untagged
@@ -144,6 +145,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1466543836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3019453494161768718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37009743, y: 1.1354005, z: 0.105771884}
+  m_Center: {x: 0.000000007450582, y: -0.4527073, z: 0.00000005215408}
 --- !u!1 &3792232107187562084
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +283,7 @@ GameObject:
   - component: {fileID: 4874072526395076383}
   - component: {fileID: 6515610877494602100}
   - component: {fileID: 1345286776518458061}
+  - component: {fileID: 1223403020052162163}
   m_Layer: 7
   m_Name: Half_Donut_Stick
   m_TagString: Untagged
@@ -339,6 +354,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1223403020052162163
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7665173394197093872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.025
+  m_Height: 0.4
+  m_Direction: 0
+  m_Center: {x: 0.1698603, y: 0, z: 4.656613e-10}
 --- !u!1 &8678415232188660014
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +379,7 @@ GameObject:
   - component: {fileID: 4695211902411015945}
   - component: {fileID: 3384849674601573289}
   - component: {fileID: 484567012704731763}
+  - component: {fileID: 3984917391755676318}
   m_Layer: 7
   m_Name: Half_Donut_01
   m_TagString: Untagged
@@ -420,3 +450,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3984917391755676318
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8678415232188660014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19281752, y: 0.060000017, z: 0.30000007}
+  m_Center: {x: -0.08194526, y: -0.000000004656613, z: -0.000000022351742}

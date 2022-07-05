@@ -1,7 +1,7 @@
 using PanteonDemoProject.Abstracts.GameState;
 using UnityEngine;
 
-namespace PanteonDemoProject.Abstracts.AnimationControl
+namespace PanteonDemoProject.Concretes.Controllers
 {
     public class AnimationControl
     {

@@ -1,14 +1,15 @@
+using PanteonDemoProject.Abstracts.Settings;
 using UnityEngine;
 
 namespace PanteonDemoProject.Concretes.Movements
 {
     public class RotatingPlatformMovement : MonoBehaviour
     {
-        [SerializeField] float _rotationSpeed = 50f;
+        [SerializeField] RotatingPlatformSettings _rotatingPlatformSettings;
 
         Rigidbody _platformRigidbody;
 
-        
+
         void Awake()
         {
             _platformRigidbody = GetComponent<Rigidbody>();
@@ -16,7 +17,7 @@ namespace PanteonDemoProject.Concretes.Movements
 
         void FixedUpdate()
         {
-            _platformRigidbody.AddTorque(transform.forward * _rotationSpeed,ForceMode.VelocityChange);
+            _platformRigidbody.AddTorque(transform.forward * _rotatingPlatformSettings.RotationSpeed, ForceMode.VelocityChange);
         }
     }
 }

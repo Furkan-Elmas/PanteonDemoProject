@@ -1,9 +1,9 @@
-using PanteonDemoProject.Abstracts.AnimationControl;
 using PanteonDemoProject.Abstracts.Inputs;
 using PanteonDemoProject.Abstracts.Settings;
 using PanteonDemoProject.Abstracts.GameState;
 using PanteonDemoProject.Concretes.Managers;
 using PanteonDemoProject.Concretes.Movements;
+using System.Collections;
 using UnityEngine;
 
 namespace PanteonDemoProject.Concretes.Controllers
@@ -30,29 +30,29 @@ namespace PanteonDemoProject.Concretes.Controllers
             _swerveMovement = new SwerveMovement(_playerRigidbody);
             _animationControl = new AnimationControl();
             _inputData = new InputData();
-
-            GameManager.Instance.InitializeOnStartToRun();
         }
 
         void OnEnable()
         {
             GameManager.Instance.OnReadyToRun += RepositionPlayer;
+            GameManager.Instance.OnRunningGameWon += Victory;
         }
 
         void OnDisable()
         {
             GameManager.Instance.OnReadyToRun -= RepositionPlayer;
+            GameManager.Instance.OnRunningGameWon -= Victory;
         }
 
         void Update()
         {
             _animationControl.WaitOrRun(GameManager.Instance.GameState, _playerAnimator, _inputData.IsClicking);
-            
+
             if (GameManager.Instance.GameState == GameStates.InRunning)
             {
                 if (transform.position.y < _characterSettings.VerticalOffRoadDistance)
                 {
-                    GameManager.Instance.InitializeOnRunningGameOver();
+                    GameManager.Instance.InitializeOnRunningGameLost();
                 }
                 if (transform.position.z > _characterSettings.FinishLine)
                 {
@@ -77,6 +77,18 @@ namespace PanteonDemoProject.Concretes.Controllers
         void RepositionPlayer()
         {
             transform.position = Vector3.forward * _characterSettings.StartLine;
+        }
+
+        void Victory()
+        {
+            StartCoroutine(VictoryCoroutine());
+        }
+        
+        IEnumerator VictoryCoroutine()
+        {
+            _playerAnimator.SetTrigger("Victory");
+            yield return new WaitForSecondsRealtime(3);
+            GameManager.Instance.InitializeOnStartToPaint();
         }
     }
 }
