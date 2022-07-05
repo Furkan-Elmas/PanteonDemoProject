@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PanteonDemoProject.Concretes.Player.Movements
+namespace PanteonDemoProject.Concretes.Movements
 {
     public class SwerveMovement
     {
@@ -16,7 +16,7 @@ namespace PanteonDemoProject.Concretes.Player.Movements
         public void MakeSwarveMovement(float swerveSpeed, float deltaXValue)
         {
             Vector3 force = Vector3.right* swerveSpeed * deltaXValue;
-            _playerRigidbody.AddForce(force,ForceMode.Impulse);
+            _playerRigidbody.AddForce(force,ForceMode.VelocityChange);
         }
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88189151907915432}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Half_Donut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752839174653213714}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.541656, y: -17.633125, z: 6.653985}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1586450937970212812}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6600741443447200902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stationary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1869264826642186262}
   - component: {fileID: 1981487323674431797}
   - component: {fileID: 8792392606845829702}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Half_Donut_Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 1859643902066384151}
   - component: {fileID: 842391977501459520}
   - component: {fileID: 7922308313582034255}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Half_Donut_Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1586450937970212812}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MovingStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 4874072526395076383}
   - component: {fileID: 6515610877494602100}
   - component: {fileID: 1345286776518458061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Half_Donut_Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 4695211902411015945}
   - component: {fileID: 3384849674601573289}
   - component: {fileID: 484567012704731763}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Half_Donut_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

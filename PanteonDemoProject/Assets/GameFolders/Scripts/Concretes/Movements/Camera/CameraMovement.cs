@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace PanteonDemoProject.Concretes.CameraControl
+namespace PanteonDemoProject.Concretes.Movements
 {
     public class CameraMovement
     {

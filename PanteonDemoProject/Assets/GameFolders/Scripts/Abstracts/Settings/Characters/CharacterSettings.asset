@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dda5c4ec54463a40b0b1dd3b70d2650, type: 3}
   m_Name: CharacterSettings
   m_EditorClassIdentifier: 
-  _forwardSpeed: 5
+  _forwardSpeed: 10
   _swerveSpeed: 1

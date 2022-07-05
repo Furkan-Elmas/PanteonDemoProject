@@ -1,14 +1,14 @@
-using PanteonDemoProject.Abstracts.GameStates;
+using PanteonDemoProject.Abstracts.GameState;
 using PanteonDemoProject.Concretes.ObstacleSettings;
 using UnityEngine;
 using System;
 
-namespace PanteonDemoProject.Concretes.Manager
+namespace PanteonDemoProject.Concretes.Managers
 {
     public class GameManager : MonoBehaviour
     {
         // Game data list that will take GameData Scriptable Object.
-        [SerializeField] private RotatingObstacle _rotatingObstacleSettings;
+        [SerializeField] private RotatingPlatformSettings _rotatingPlatformSettings;
 
         #region Subject Events
 
@@ -26,7 +26,7 @@ namespace PanteonDemoProject.Concretes.Manager
         public event Action OnReadyToPaint;
         public event Action OnStartToPaint;
         public event Action OnPaintingGameOver;
-        
+
         #endregion
 
         // Making singleton class.

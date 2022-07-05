@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PanteonDemoProject.Concretes.Player.Movements
+namespace PanteonDemoProject.Concretes.Movements
 {
     public class ForwardMovement
     {

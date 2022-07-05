@@ -1,9 +1,9 @@
-using PanteonDemoProject.Abstracts.GameStates;
-using PanteonDemoProject.Concretes.Manager;
-using PanteonDemoProject.Concretes.Player.Controller;
+using PanteonDemoProject.Abstracts.GameState;
+using PanteonDemoProject.Concretes.Managers;
+using PanteonDemoProject.Concretes.Movements;
 using UnityEngine;
 
-namespace PanteonDemoProject.Concretes.CameraControl
+namespace PanteonDemoProject.Concretes.Controllers
 {
     public class CameraController : MonoBehaviour
     {
