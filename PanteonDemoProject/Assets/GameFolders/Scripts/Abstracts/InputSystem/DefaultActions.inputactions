@@ -70,6 +70,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "MousePosition",
+            "id": "7ba1a485-de92-4f5c-bc46-bf3fa7c376d3",
+            "actions": [
+                {
+                    "name": "GetMousePosition",
+                    "type": "Value",
+                    "id": "bb9611a6-0644-4e0b-aff3-954fc958bc1c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "56317c94-2eff-4183-a277-94a139baa253",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetMousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

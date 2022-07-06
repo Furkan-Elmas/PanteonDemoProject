@@ -8,6 +8,7 @@ namespace PanteonDemoProject.Concretes.Managers
         [SerializeField] GameObject _startPanel;
         [SerializeField] GameObject _restartPanel;
         [SerializeField] GameObject _paintProgress;
+        [SerializeField] GameObject _winPanel;
 
         [SerializeField] Text _currentRank;
         [SerializeField] Text _paintProgressText;
@@ -18,6 +19,7 @@ namespace PanteonDemoProject.Concretes.Managers
             GameManager.Instance.OnReadyToRun += HideCurrentRank;
             GameManager.Instance.OnReadyToRun += HidePaintProgress;
             GameManager.Instance.OnReadyToRun += HideRestartPanel;
+            GameManager.Instance.OnReadyToRun += HideWinPanel;
             GameManager.Instance.OnReadyToRun += ShowStartPanel;
 
             GameManager.Instance.OnStartToRun += HideStartPanel;
@@ -30,6 +32,8 @@ namespace PanteonDemoProject.Concretes.Managers
 
             GameManager.Instance.OnPercentageIncrease += UpdatePaintProgress;
             GameManager.Instance.OnRankUpdate += UpdateCurrentRank;
+
+            GameManager.Instance.OnPaintingGameWon += ShowWinPanel;
         }
 
         void ShowStartPanel()
@@ -74,6 +78,16 @@ namespace PanteonDemoProject.Concretes.Managers
             _paintProgressText.enabled = false;
         }
 
+        void ShowWinPanel()
+        {
+            _winPanel.SetActive(true);
+        }
+
+        void HideWinPanel()
+        {
+            _winPanel.SetActive(false);
+        }
+
         void UpdateCurrentRank(int rank)
         {
             _currentRank.text = $"Rank: {rank}/11";
@@ -104,6 +118,7 @@ namespace PanteonDemoProject.Concretes.Managers
             GameManager.Instance.OnReadyToRun -= HideCurrentRank;
             GameManager.Instance.OnReadyToRun -= HidePaintProgress;
             GameManager.Instance.OnReadyToRun -= HideRestartPanel;
+            GameManager.Instance.OnReadyToRun -= HideWinPanel;
             GameManager.Instance.OnReadyToRun -= ShowStartPanel;
 
             GameManager.Instance.OnStartToRun -= HideStartPanel;
@@ -116,6 +131,8 @@ namespace PanteonDemoProject.Concretes.Managers
 
             GameManager.Instance.OnPercentageIncrease -= UpdatePaintProgress;
             GameManager.Instance.OnRankUpdate -= UpdateCurrentRank;
+
+            GameManager.Instance.OnPaintingGameWon -= ShowWinPanel;
         }
     }
 }

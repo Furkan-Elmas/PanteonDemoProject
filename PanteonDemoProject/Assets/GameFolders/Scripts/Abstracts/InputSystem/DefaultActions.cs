@@ -94,6 +94,34 @@ namespace PanteonDemoProject.Abstracts.Inputs
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""MousePosition"",
+            ""id"": ""7ba1a485-de92-4f5c-bc46-bf3fa7c376d3"",
+            ""actions"": [
+                {
+                    ""name"": ""GetMousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""bb9611a6-0644-4e0b-aff3-954fc958bc1c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""56317c94-2eff-4183-a277-94a139baa253"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GetMousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -102,6 +130,9 @@ namespace PanteonDemoProject.Abstracts.Inputs
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Swerve = m_Player.FindAction("Swerve", throwIfNotFound: true);
+            // MousePosition
+            m_MousePosition = asset.FindActionMap("MousePosition", throwIfNotFound: true);
+            m_MousePosition_GetMousePosition = m_MousePosition.FindAction("GetMousePosition", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -198,10 +229,47 @@ namespace PanteonDemoProject.Abstracts.Inputs
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
+
+        // MousePosition
+        private readonly InputActionMap m_MousePosition;
+        private IMousePositionActions m_MousePositionActionsCallbackInterface;
+        private readonly InputAction m_MousePosition_GetMousePosition;
+        public struct MousePositionActions
+        {
+            private @DefaultActions m_Wrapper;
+            public MousePositionActions(@DefaultActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @GetMousePosition => m_Wrapper.m_MousePosition_GetMousePosition;
+            public InputActionMap Get() { return m_Wrapper.m_MousePosition; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MousePositionActions set) { return set.Get(); }
+            public void SetCallbacks(IMousePositionActions instance)
+            {
+                if (m_Wrapper.m_MousePositionActionsCallbackInterface != null)
+                {
+                    @GetMousePosition.started -= m_Wrapper.m_MousePositionActionsCallbackInterface.OnGetMousePosition;
+                    @GetMousePosition.performed -= m_Wrapper.m_MousePositionActionsCallbackInterface.OnGetMousePosition;
+                    @GetMousePosition.canceled -= m_Wrapper.m_MousePositionActionsCallbackInterface.OnGetMousePosition;
+                }
+                m_Wrapper.m_MousePositionActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @GetMousePosition.started += instance.OnGetMousePosition;
+                    @GetMousePosition.performed += instance.OnGetMousePosition;
+                    @GetMousePosition.canceled += instance.OnGetMousePosition;
+                }
+            }
+        }
+        public MousePositionActions @MousePosition => new MousePositionActions(this);
         public interface IPlayerActions
         {
             void OnMove(InputAction.CallbackContext context);
             void OnSwerve(InputAction.CallbackContext context);
+        }
+        public interface IMousePositionActions
+        {
+            void OnGetMousePosition(InputAction.CallbackContext context);
         }
     }
 }
