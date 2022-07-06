@@ -5,16 +5,38 @@ namespace PanteonDemoProject.Concretes.Controllers
 {
     public class AnimationControl
     {
-        public void WaitOrRun(GameStates gameState, Animator characterAnimator, bool isRunning)
+        Animator _characterAnimator;
+
+        public AnimationControl(Animator characterAnimator)
+        {
+            _characterAnimator = characterAnimator;
+        }
+
+        public void WaitOrRun(GameStates gameState, bool isRunning)
         {
             if (gameState == GameStates.InRunning)
             {
-                characterAnimator.SetBool("IsRunning", isRunning);
+                _characterAnimator.SetBool("IsRunning", isRunning);
             }
             else
             {
-                characterAnimator.SetBool("IsRunning", false);
+                _characterAnimator.SetBool("IsRunning", false);
             }
+        }
+
+        public void Cheer()
+        {
+            _characterAnimator.SetTrigger("Victory");
+        }
+
+        public void Die()
+        {
+            _characterAnimator.SetTrigger("Death");
+        }
+
+        public void AnimationReset()
+        {
+            _characterAnimator.Rebind();
         }
 
     }

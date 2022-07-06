@@ -28,25 +28,21 @@ namespace PanteonDemoProject.Concretes.Controllers
 
             _forwardMovement = new ForwardMovement(_playerRigidbody);
             _swerveMovement = new SwerveMovement(_playerRigidbody);
-            _animationControl = new AnimationControl();
+            _animationControl = new AnimationControl(_playerAnimator);
             _inputData = new InputData();
         }
 
         void OnEnable()
         {
             GameManager.Instance.OnReadyToRun += RepositionPlayer;
+            GameManager.Instance.OnReadyToRun += AnimationReset;
             GameManager.Instance.OnRunningGameWon += Victory;
-        }
-
-        void OnDisable()
-        {
-            GameManager.Instance.OnReadyToRun -= RepositionPlayer;
-            GameManager.Instance.OnRunningGameWon -= Victory;
+            GameManager.Instance.OnRunningGameLost += Death;
         }
 
         void Update()
         {
-            _animationControl.WaitOrRun(GameManager.Instance.GameState, _playerAnimator, _inputData.IsClicking);
+            _animationControl.WaitOrRun(GameManager.Instance.GameState, _inputData.IsClicking);
 
             if (GameManager.Instance.GameState == GameStates.InRunning)
             {
@@ -74,21 +70,41 @@ namespace PanteonDemoProject.Concretes.Controllers
             }
         }
 
+        void Victory()
+        {
+            StartCoroutine(GoToPaintWall());
+        }
+
+        IEnumerator GoToPaintWall()
+        {
+            _animationControl.Cheer();
+            yield return new WaitForSecondsRealtime(3);
+            GameManager.Instance.InitializeOnStartToPaint();
+        }
+
+        void Death()
+        {
+            _animationControl.Die();
+            _playerRigidbody.isKinematic = true;
+        }
+
         void RepositionPlayer()
         {
             transform.position = Vector3.forward * _characterSettings.StartLine;
+            _playerRigidbody.isKinematic = false;
         }
 
-        void Victory()
+        void AnimationReset()
         {
-            StartCoroutine(VictoryCoroutine());
+            _animationControl.AnimationReset();
         }
-        
-        IEnumerator VictoryCoroutine()
+
+        void OnDisable()
         {
-            _playerAnimator.SetTrigger("Victory");
-            yield return new WaitForSecondsRealtime(3);
-            GameManager.Instance.InitializeOnStartToPaint();
+            GameManager.Instance.OnReadyToRun -= RepositionPlayer;
+            GameManager.Instance.OnReadyToRun -= AnimationReset;
+            GameManager.Instance.OnRunningGameWon -= Victory;
+            GameManager.Instance.OnRunningGameLost -= Death;
         }
     }
 }

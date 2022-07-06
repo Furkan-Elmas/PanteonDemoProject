@@ -9,15 +9,14 @@ namespace PanteonDemoProject.Concretes.Movements
 
         Rigidbody _rotatorRigidbody;
 
-
         void Awake()
         {
-            _rotatorRigidbody = GetComponent<Rigidbody>();
+            _rotatorRigidbody = GetComponentInChildren<Rigidbody>();
         }
 
         void Start()
         {
-            _rotatorRigidbody.centerOfMass = transform.localPosition;
+            _rotatorRigidbody.centerOfMass = _rotatorRigidbody.transform.localPosition;
         }
 
         void FixedUpdate()

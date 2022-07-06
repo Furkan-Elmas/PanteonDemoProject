@@ -25,7 +25,7 @@ namespace PanteonDemoProject.Concretes.Controllers
 
         void FixedUpdate()
         {
-            if (GameManager.Instance.GameState == GameStates.InRunning)
+            if (GameManager.Instance.GameState == GameStates.InRunning || GameManager.Instance.GameState == GameStates.InReadyToRun)
             {
                 _cameraMover.MoveCamera(_targetOfCamera.transform, _verticalCameraOffset, _horizontalCameraOffset, _cameraFollowSpeed);
             }

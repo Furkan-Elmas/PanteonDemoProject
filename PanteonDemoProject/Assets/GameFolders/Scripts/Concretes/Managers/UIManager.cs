@@ -6,20 +6,24 @@ namespace PanteonDemoProject.Concretes.Managers
     public class UIManager : MonoBehaviour
     {
         [SerializeField] GameObject _startPanel;
+        [SerializeField] GameObject _restartPanel;
         [SerializeField] GameObject _paintProgress;
 
         [SerializeField] Text _currentRank;
         [SerializeField] Text _paintProgressText;
 
-        
+
         void OnEnable()
         {
             GameManager.Instance.OnReadyToRun += HideCurrentRank;
             GameManager.Instance.OnReadyToRun += HidePaintProgress;
+            GameManager.Instance.OnReadyToRun += HideRestartPanel;
             GameManager.Instance.OnReadyToRun += ShowStartPanel;
 
             GameManager.Instance.OnStartToRun += HideStartPanel;
             GameManager.Instance.OnStartToRun += ShowCurrentRank;
+
+            GameManager.Instance.OnRunningGameLost += ShowRestartPanel;
 
             GameManager.Instance.OnStartToPaint += HideCurrentRank;
             GameManager.Instance.OnStartToPaint += ShowPaintProgress;
@@ -36,6 +40,16 @@ namespace PanteonDemoProject.Concretes.Managers
         void HideStartPanel()
         {
             _startPanel.SetActive(false);
+        }
+
+        void ShowRestartPanel()
+        {
+            _restartPanel.SetActive(true);
+        }
+
+        void HideRestartPanel()
+        {
+            _restartPanel.SetActive(false);
         }
 
         void ShowCurrentRank()
@@ -75,14 +89,27 @@ namespace PanteonDemoProject.Concretes.Managers
             GameManager.Instance.InitializeOnStartToRun();
         }
 
+        public void TapToRestartButton()
+        {
+            GameManager.Instance.InitializeOnReadyToRun();
+        }
+
+        public void TapToQuitButton()
+        {
+            Application.Quit();
+        }
+
         void OnDisable()
         {
             GameManager.Instance.OnReadyToRun -= HideCurrentRank;
             GameManager.Instance.OnReadyToRun -= HidePaintProgress;
+            GameManager.Instance.OnReadyToRun -= HideRestartPanel;
             GameManager.Instance.OnReadyToRun -= ShowStartPanel;
 
             GameManager.Instance.OnStartToRun -= HideStartPanel;
             GameManager.Instance.OnStartToRun -= ShowCurrentRank;
+
+            GameManager.Instance.OnRunningGameLost -= ShowRestartPanel;
 
             GameManager.Instance.OnStartToPaint -= HideCurrentRank;
             GameManager.Instance.OnStartToPaint -= ShowPaintProgress;
