@@ -35,5 +35,5 @@ Game camera is viewing the painting wall that has RenderTexture.
 
 If there is anything you want to say please connect me or send a pull-request.
 
-Best Regards
+Thanks for reading,
 Furkan Elmas
