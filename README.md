@@ -30,7 +30,7 @@ Singleton, Object Pooling, Observer design patterns are used.
 
 Navigation Mesh Agent Unity Tool is used for enemy AI. But there are some bugs, like-> opponents are not moving back to start line after game stopped.
 
-There are placed 2 Camera for painting game. Painting camera is viewing a RenderTexture to create. 
+There are 2 Camera placed the game area for painting game. Painting camera is viewing a RenderTexture to create. 
 Game camera is viewing the painting wall that has RenderTexture.
 
 If there is anything you want to say please connect me or send a pull-request.
