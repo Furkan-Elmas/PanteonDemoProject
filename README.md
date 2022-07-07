@@ -20,7 +20,6 @@ Goal: \
 Player must reach to the finish line without touching any obstacle or falling down.
 Opponents can win too. So player must be quick. If any opponent arrives the finish line before player the game will be over.
 
-You can find a playable .exe file in BuildFolders.\
 ![Gameplay](https://user-images.githubusercontent.com/98258752/177772531-b36c27c5-5ef8-4da1-b4de-a96e6ae7ff37.png)
 ![Paint](https://user-images.githubusercontent.com/98258752/177772970-20748927-b642-4bed-aa4c-831b444ff948.png)
 
