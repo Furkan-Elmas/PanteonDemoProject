@@ -13,6 +13,8 @@ namespace PanteonDemoProject.Concretes.Managers
         [SerializeField] Text _currentRank;
         [SerializeField] Text _paintProgressText;
 
+        [SerializeField] Slider _paintProgressBar;
+
 
         void OnEnable()
         {
@@ -96,6 +98,7 @@ namespace PanteonDemoProject.Concretes.Managers
         void UpdatePaintProgress(int percentage)
         {
             _paintProgressText.text = $"{percentage}% Completed";
+            _paintProgressBar.value = percentage;
         }
 
         public void TapToStartButton()

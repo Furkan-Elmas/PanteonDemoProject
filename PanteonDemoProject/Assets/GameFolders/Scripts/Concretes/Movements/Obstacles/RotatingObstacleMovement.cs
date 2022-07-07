@@ -7,21 +7,16 @@ namespace PanteonDemoProject.Concretes.Movements
     {
         [SerializeField] RotatingObstacleMovementSettings _movementSettings;
 
-        Rigidbody _rotatorRigidbody;
+        ConstantForce _rotatorConstantForce;
 
         void Awake()
         {
-            _rotatorRigidbody = GetComponentInChildren<Rigidbody>();
+            _rotatorConstantForce = GetComponent<ConstantForce>();
         }
 
         void Start()
         {
-            _rotatorRigidbody.centerOfMass = _rotatorRigidbody.transform.localPosition;
-        }
-
-        void FixedUpdate()
-        {
-            _rotatorRigidbody.AddRelativeTorque(transform.up * _movementSettings.RotationSpeed, ForceMode.VelocityChange);
+            _rotatorConstantForce.torque *= _movementSettings.RotationSpeed;
         }
     }
 }

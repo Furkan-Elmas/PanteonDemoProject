@@ -1,9 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using PanteonDemoProject.Abstracts.Inputs;
 using PanteonDemoProject.Abstracts.Settings;
 using PanteonDemoProject.Abstracts.GameState;
 using PanteonDemoProject.Concretes.Managers;
 using PanteonDemoProject.Concretes.Movements;
-using System.Collections;
+
 using UnityEngine;
 
 namespace PanteonDemoProject.Concretes.Controllers
@@ -19,6 +21,10 @@ namespace PanteonDemoProject.Concretes.Controllers
         SwerveMovement _swerveMovement;
         AnimationControl _animationControl;
         InputData _inputData;
+
+        CurrentRankController _rankController;
+
+        List<float> _ranks;
 
 
         void Awake()

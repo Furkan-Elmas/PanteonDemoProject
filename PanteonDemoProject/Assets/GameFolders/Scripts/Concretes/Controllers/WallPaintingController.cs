@@ -17,7 +17,6 @@ namespace PanteonDemoProject.Concretes.Controllers
 
         Queue<GameObject> _objectPool;
 
-        Texture _mainTexture;
         InputData _inputData;
         Vector3 _distanceBetweenWalls;
 
@@ -28,7 +27,7 @@ namespace PanteonDemoProject.Concretes.Controllers
         void Awake()
         {
             _inputData = new InputData();
-            _objectPool = new Queue<GameObject>();
+            _objectPool = new Queue<GameObject>(); // Creating a queue for object pool
 
             ObjectPooling();
         }
@@ -41,15 +40,13 @@ namespace PanteonDemoProject.Concretes.Controllers
         void Start()
         {
             _distanceBetweenWalls = _rendererWall.transform.position - transform.position;
-            _mainTexture = GetComponent<Texture>();
-
         }
 
         void FixedUpdate()
         {
             if (_inputData.IsClicking && GameManager.Instance.GameState == GameStates.InPainting)
             {
-                Ray ray = Camera.main.ScreenPointToRay(_inputData.MousePosition);
+                Ray ray = Camera.main.ScreenPointToRay(_inputData.MousePosition); // Casting a ray from screen to wall
                 RaycastHit hit;
                 Vector3 brushPosition = Vector3.zero;
 
@@ -78,17 +75,18 @@ namespace PanteonDemoProject.Concretes.Controllers
 
         int CalculatePaintingPercentage()
         {
-            RenderTexture.active = _wallRenderTexture;
-            Texture2D renderTexture2D = new Texture2D(_wallRenderTexture.width, _wallRenderTexture.height);
-            renderTexture2D.ReadPixels(new Rect(0, 0, _wallRenderTexture.width, _wallRenderTexture.height), 0, 0);
-            renderTexture2D.Apply();
+            RenderTexture.active = _wallRenderTexture; // activating unity render engine for creating a texture
+            Texture2D renderTexture2D = new Texture2D(_wallRenderTexture.width, _wallRenderTexture.height); // Creating a Texture2D sized to wallRenderTexture in sight of paintingWallCamera
+            renderTexture2D.ReadPixels(new Rect(0, 0, _wallRenderTexture.width, _wallRenderTexture.height), 0, 0); // Reading total pixel count of it
+            renderTexture2D.Apply(); // Finish rendering
             RenderTexture.active = null;
 
-            _basePixels = renderTexture2D.width * renderTexture2D.height;
+            _basePixels = renderTexture2D.width * renderTexture2D.height; // Taking total pixel count as a value.
             _paintedPixels = 0;
 
             Color[] basePixelColors = renderTexture2D.GetPixels();
 
+            // Detect how many pixels are painted red
             foreach (Color pixelColor in basePixelColors)
             {
                 if (pixelColor.b == 0)
@@ -99,7 +97,7 @@ namespace PanteonDemoProject.Concretes.Controllers
 
             int percentage = Mathf.CeilToInt(_paintedPixels * 100 / basePixelColors.Length);
 
-            if (percentage > 95)
+            if (percentage > 98.5f)
                 GameManager.Instance.InitializeOnPaintingGameWon();
 
             return percentage;

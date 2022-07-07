@@ -5,11 +5,15 @@ namespace PanteonDemoProject.Concretes.Controllers
 {
     public class ObstacleHitController : MonoBehaviour
     {
-        void OnCollisionEnter(Collision collision)
+        void OnTriggerEnter(Collider collider)
         {
-            if (collision.transform.CompareTag("Player"))
+            if (collider.transform.CompareTag("Player"))
             {
                 GameManager.Instance.InitializeOnRunningGameLost();
+            }
+            if(collider.gameObject.TryGetComponent(out AgentController agentController))
+            {
+                agentController.AgentDeath();
             }
         }
     }

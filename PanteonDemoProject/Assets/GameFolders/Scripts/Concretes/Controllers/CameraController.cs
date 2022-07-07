@@ -47,12 +47,12 @@ namespace PanteonDemoProject.Concretes.Controllers
 
         void EditCullingMask()
         {
-            _runningCamera.cullingMask = LayerMask.GetMask("UI");
+            _runningCamera.cullingMask = LayerMask.GetMask("UI"); // For removing everything from camera view but paintwall
         }
 
         void ResetCullingMask()
         {
-            _runningCamera.cullingMask = LayerMask.GetMask("Statics", "Dynamics", "Characters");
+            _runningCamera.cullingMask = LayerMask.GetMask("Statics", "Dynamics", "Characters"); // Reset to start layers
         }
 
         void SetCameraRotation()

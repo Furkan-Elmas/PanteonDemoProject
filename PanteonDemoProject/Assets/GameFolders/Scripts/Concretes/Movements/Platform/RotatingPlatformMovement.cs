@@ -7,17 +7,17 @@ namespace PanteonDemoProject.Concretes.Movements
     {
         [SerializeField] RotatingPlatformSettings _rotatingPlatformSettings;
 
-        Rigidbody _platformRigidbody;
+        ConstantForce _platformConstantForce;
 
 
         void Awake()
         {
-            _platformRigidbody = GetComponent<Rigidbody>();
+            _platformConstantForce = GetComponent<ConstantForce>();
         }
 
-        void FixedUpdate()
+        void Start()
         {
-            _platformRigidbody.AddTorque(transform.forward * _rotatingPlatformSettings.RotationSpeed, ForceMode.VelocityChange);
+            _platformConstantForce.torque *= _rotatingPlatformSettings.RotationSpeed;
         }
     }
 }

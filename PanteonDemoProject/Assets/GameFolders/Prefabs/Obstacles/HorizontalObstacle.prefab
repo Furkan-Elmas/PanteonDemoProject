@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 480076698407365085}
   - component: {fileID: 6372332964987518159}
   - component: {fileID: 8276964596515376696}
+  - component: {fileID: 7100047051428829557}
   m_Layer: 7
   m_Name: HorizontalObstacle
   m_TagString: Untagged
@@ -91,7 +92,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5479870221794333336}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.047330894
   m_Height: 0.25618502
@@ -109,3 +110,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69dc52deb4c79a4590947228c6541ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &7100047051428829557
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479870221794333336}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.047000002, y: 0.128, z: 0.047000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

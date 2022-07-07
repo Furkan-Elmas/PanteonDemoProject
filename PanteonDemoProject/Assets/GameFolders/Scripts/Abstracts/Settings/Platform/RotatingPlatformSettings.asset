@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ee5e38bbbfe864298423e9fb210dad, type: 3}
   m_Name: RotatingPlatformSettings
   m_EditorClassIdentifier: 
-  _rotationSpeed: 30
+  _rotationSpeed: 1

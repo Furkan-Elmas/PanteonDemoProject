@@ -5,6 +5,7 @@ namespace PanteonDemoProject.Abstracts.Inputs
 {
     public class InputData
     {
+        // Using new input system of unity
         DefaultActions _inputActions;
 
         public Vector2 MousePosition { get; private set; }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2128697313942294883}
   - component: {fileID: 2187052134573772196}
   - component: {fileID: 7069041897362772358}
+  - component: {fileID: 4036972085642278465}
   m_Layer: 7
   m_Name: RotatingPlatformPurple
   m_TagString: Untagged
@@ -126,4 +127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dd9b8909119a74cb531f33eaccda24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 50
+  _rotatingPlatformSettings: {fileID: 0}
+--- !u!75 &4036972085642278465
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4202604147619256685}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 1000000}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}

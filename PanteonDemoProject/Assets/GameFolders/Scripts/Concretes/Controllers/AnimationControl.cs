@@ -7,7 +7,7 @@ namespace PanteonDemoProject.Concretes.Controllers
     {
         Animator _characterAnimator;
 
-        public AnimationControl(Animator characterAnimator)
+        public AnimationControl(Animator characterAnimator) // Every time a new AnimationControl script generated it will take an animator
         {
             _characterAnimator = characterAnimator;
         }

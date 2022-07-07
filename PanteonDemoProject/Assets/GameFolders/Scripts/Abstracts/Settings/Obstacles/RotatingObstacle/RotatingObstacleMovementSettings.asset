@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e12ac7e19079da47863df39681be4af, type: 3}
   m_Name: RotatingObstacleMovementSettings
   m_EditorClassIdentifier: 
-  _rotationSpeed: 5
+  _rotationSpeed: 1
