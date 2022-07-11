@@ -61,6 +61,17 @@ namespace PanteonDemoProject.Abstracts.Inputs
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""9d863981-4032-4d98-962a-a00dfad51db5"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""One Modifier"",
                     ""id"": ""dccb9119-6a28-4334-afc5-113447aa2cae"",
                     ""path"": ""OneModifier"",
@@ -92,6 +103,39 @@ namespace PanteonDemoProject.Abstracts.Inputs
                     ""action"": ""Swerve"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""9b137261-9711-487b-b979-7f9465043ae8"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swerve"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""0ec77630-26b0-494c-b5e8-31d104f367e2"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swerve"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""5da47976-e561-47d2-b845-51e54b5e8207"",
+                    ""path"": ""<Touchscreen>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swerve"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -114,6 +158,17 @@ namespace PanteonDemoProject.Abstracts.Inputs
                     ""name"": """",
                     ""id"": ""56317c94-2eff-4183-a277-94a139baa253"",
                     ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GetMousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d67bd29a-c00a-4a63-8da2-75f9a9c5a0ca"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
