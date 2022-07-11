@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using PanteonDemoProject.Abstracts.GameState;
 using PanteonDemoProject.Abstracts.Inputs;
 using PanteonDemoProject.Concretes.Managers;
@@ -35,6 +36,7 @@ namespace PanteonDemoProject.Concretes.Controllers
         void OnEnable()
         {
             GameManager.Instance.OnReadyToRun += ResetPool;
+            GameManager.Instance.OnStartToPaint += StartPainting;
         }
 
         void Start()
@@ -42,28 +44,36 @@ namespace PanteonDemoProject.Concretes.Controllers
             _distanceBetweenWalls = _rendererWall.transform.position - transform.position;
         }
 
-        void FixedUpdate()
+        void StartPainting()
         {
-            if (_inputData.IsClicking && GameManager.Instance.GameState == GameStates.InPainting)
+            StartCoroutine(PaintingCoroutine());
+        }
+
+        IEnumerator PaintingCoroutine()
+        {
+            while (GameManager.Instance.GameState == GameStates.InPainting)
             {
-                Ray ray = Camera.main.ScreenPointToRay(_inputData.MousePosition); // Casting a ray from screen to wall
-                RaycastHit hit;
-                Vector3 brushPosition = Vector3.zero;
+                yield return new WaitForSeconds(0.05f);
 
-                if (Physics.Raycast(ray, out hit))
+                if (_inputData.IsClicking)
                 {
-                    MeshCollider meshCollider = hit.collider as MeshCollider;
-                    if (meshCollider == null)
-                        return;
+                    Ray ray = Camera.main.ScreenPointToRay(_inputData.MousePosition); // Casting a ray from screen to wall
+                    RaycastHit hit;
+                    Vector3 brushPosition = Vector3.zero;
 
-                    brushPosition = hit.point + _distanceBetweenWalls;
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        MeshCollider meshCollider = hit.collider as MeshCollider;
 
-                    GameObject brushClone = GetPooledObject();
+                        brushPosition = hit.point + _distanceBetweenWalls;
 
-                    brushClone.transform.localPosition = brushPosition;
-                    brushClone.transform.rotation = hit.transform.rotation;
+                        GameObject brushClone = GetPooledObject();
 
-                    UpdatePercentage();
+                        brushClone.transform.localPosition = brushPosition;
+                        brushClone.transform.rotation = hit.transform.rotation;
+
+                        UpdatePercentage();
+                    }
                 }
             }
         }
@@ -89,7 +99,7 @@ namespace PanteonDemoProject.Concretes.Controllers
             // Detect how many pixels are painted red
             foreach (Color pixelColor in basePixelColors)
             {
-                if (pixelColor.b == 0)
+                if (pixelColor.b < 0.2f)
                 {
                     _paintedPixels++;
                 }
@@ -97,7 +107,7 @@ namespace PanteonDemoProject.Concretes.Controllers
 
             int percentage = Mathf.CeilToInt(_paintedPixels * 100 / basePixelColors.Length);
 
-            if (percentage > 98.5f)
+            if (percentage > 99)
                 GameManager.Instance.InitializeOnPaintingGameWon();
 
             return percentage;
@@ -136,6 +146,7 @@ namespace PanteonDemoProject.Concretes.Controllers
         void OnDisable()
         {
             GameManager.Instance.OnReadyToRun -= ResetPool;
+            GameManager.Instance.OnStartToPaint -= StartPainting;
         }
     }
 }
