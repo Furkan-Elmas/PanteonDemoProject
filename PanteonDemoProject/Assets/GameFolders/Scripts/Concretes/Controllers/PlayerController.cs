@@ -5,7 +5,6 @@ using PanteonDemoProject.Abstracts.Settings;
 using PanteonDemoProject.Abstracts.GameState;
 using PanteonDemoProject.Concretes.Managers;
 using PanteonDemoProject.Concretes.Movements;
-
 using UnityEngine;
 
 namespace PanteonDemoProject.Concretes.Controllers

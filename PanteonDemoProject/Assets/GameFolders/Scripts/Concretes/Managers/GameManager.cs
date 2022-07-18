@@ -1,5 +1,4 @@
 using PanteonDemoProject.Abstracts.GameState;
-using PanteonDemoProject.Abstracts.Settings;
 using UnityEngine;
 using System;
 
@@ -45,8 +44,7 @@ namespace PanteonDemoProject.Concretes.Managers
             InitializeOnReadyToRun();
         }
 
-
-        // Creating observer methods
+        // Creating observers' method
         public void InitializeOnReadyToRun()
         {
             GameState = GameStates.InReadyToRun;

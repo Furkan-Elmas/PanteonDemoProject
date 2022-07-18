@@ -50,7 +50,6 @@ namespace PanteonDemoProject.Concretes.Controllers
 
         void UpdateRank(GameObject character)
         {
-            _characters[character.transform.root.name] = character;
             IOrderedEnumerable<KeyValuePair<string, GameObject>> sortedCharacters = _characters.OrderByDescending(x => x.Value.transform.root.position.z); // Creating a linqed list and sorting it
 
             int i = 0;
